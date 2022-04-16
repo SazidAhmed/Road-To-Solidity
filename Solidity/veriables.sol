@@ -26,4 +26,14 @@ contract MyContract{
         GREEN,
         BLUE
     }
+
+    //visibility
+    uint private x;
+    // uint internal x;
+    // uint public x;
+
+    function getValue() public view returns(uint){
+        uint b;
+        return b = x + 1;
+    }
 }
