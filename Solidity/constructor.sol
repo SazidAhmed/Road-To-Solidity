@@ -4,7 +4,7 @@ pragma solidity ^0.8.13;
 contract MyContract{
     uint a ;
     
-    constructor(uint _a) public {
+    constructor(uint _a) {
         a = _a;
     }
 }
