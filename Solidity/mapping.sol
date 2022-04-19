@@ -3,23 +3,49 @@ pragma solidity ^0.8.13;
 
 contract MyContract{
     //declare mapping
-    //crud
-    mapping(address => uint) balances;
+    mapping(address => uint) public balances;
+    mapping(address => mapping(address => bool)) approved;
+    mapping(address => uint[]) scores;
 
-    function foo() external {
+    function foo(uint newBalance) external {
+        //crud
         //add 
-        balances[msg.sender] = 100;
+        balances[msg.sender] = newBalance;
         //read
         balances[msg.sender];
         //update
-        balances[msg.sender] = 200;
+        balances[msg.sender] = newBalance;
         //delete
         delete balances[msg.sender];
 
     }
-    
-    //default values
-    balances[someAddressThatDoNoExist] => 0;
-    //nested mappings
-    //array inside mapping
+
+    function MappingExample(address spender) external {
+        //default values
+        // balances[someAddressThatDoNoExist] => 0;
+        
+        //exotic mapping : nested mappings
+        //crud
+        //add 
+        approved[msg.sender][spender] = true;
+        //read
+        approved[msg.sender][spender];
+        //update
+        approved[msg.sender][spender] = false;
+        //delete
+        delete approved[msg.sender][spender];
+
+        //exotic mappint : array inside mapping
+        //crud
+        //add 
+        scores[msg.sender].push(1);
+        //read
+        scores[msg.sender][0];
+        //update
+        scores[msg.sender][0] = 10;
+        //delete
+        delete scores[msg.sender][0];
+
+
+    }
 }
